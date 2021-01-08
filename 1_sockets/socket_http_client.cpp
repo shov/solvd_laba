@@ -15,13 +15,13 @@ int socket_connect(char *host, in_port_t port);
 
 int main() {
     int fd;
-    const char* host = "www.example.com";
+    const char* host = "www.google.com";
     in_port_t port = 80;
 
     fd = socket_connect((char *)host, port);
 
-    const char* body = "GET / HTTP/1.0\r\n"
-                             "Host: www.example.com\r\n"
+    const char* body = "GET /search?q=what+http+is HTTP/1.0\r\n"
+                             "Host: www.google.com\r\n"
                              "\r\n";
 
     printf("Request\n%s\n\n", body);
