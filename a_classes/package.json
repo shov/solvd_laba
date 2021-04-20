@@ -1,0 +1,25 @@
+{
+  "name": "a_classes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/classes.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.12"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}

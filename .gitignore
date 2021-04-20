@@ -2,4 +2,5 @@
 .idea
 .vs-code
 cmake-build-debug
+node_modules
 
