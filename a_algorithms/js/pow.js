@@ -39,15 +39,13 @@ log(`-------------------------`)
 
 function powReduce(x, n) {
   let start = process.hrtime()
-  start = start[0] * 1000000 + start[1]
 
-	const result =  n == 0 ? 1 : new Array(  Math.floor(n)  )
+	const result =  n === 0 ? 1 : new Array(  Math.floor(n)  )
 				.fill(x)
     .reduce((acc, _) => acc * x)
 
-  let finish = process.hrtime()
-  finish = finish[0] * 1000000 + finish[1]
-  log(`T:${finish - start}`)
+  let took = process.hrtime(start)
+  log(`T:${took[0] * 1000000 + took[1]}`)
   return result
 }
 
@@ -63,7 +61,6 @@ log(`-------------------------`)
 
 function powSq(x, n) {
   let start = process.hrtime()
-  start = start[0] * 1000000 + start[1]
 
   let result = 1
   let xInPowOf2 = x
@@ -78,9 +75,8 @@ function powSq(x, n) {
     n = n >> 1 //or n /= 2
   }
 
-  let finish = process.hrtime()
-  finish = finish[0] * 1000000 + finish[1]
-  log(`T:${finish - start}`)
+  let took = process.hrtime(start)
+  log(`T:${took[0] * 1000000 + took[1]}`)
   return result
 }
 //log(powSq(3, 13))

@@ -46,7 +46,7 @@ function selectionSort(arr) {
 }
 
 
-function quickSort(arr) {
+function simpleQuickSort(arr) {
   if (arr.length < 2) return arr
 
   const pivot = ~~(arr.length / 2)
@@ -67,10 +67,10 @@ function quickSort(arr) {
 
     middle.push(arr[i])
   }
-  return [...quickSort(left, false), ...middle, ...quickSort(right, false)]
+  return [...simpleQuickSort(left, false), ...middle, ...simpleQuickSort(right, false)]
 }
 
-function memQuickSort(arr) {
+function quickSort(arr) {
   const swap = (i, j, arr) => {
     const mem = arr[i]
     arr[i] = arr[j]
@@ -135,16 +135,16 @@ assert('select_s 4', [0, 2, 100].sort((a, b) => a - b).join(',') === selectionSo
 assert('select_s 4', [1000, 2, 100].sort((a, b) => a - b).join(',') === selectionSort([1000, 2, 100]).join(','))
 
 const arr3 = arr1
-assert('quick__s 1', [...arr3].sort((a, b) => a - b).join(',') === quickSort([...arr3]).join(','))
-assert('quick__s 2', [].sort((a, b) => a - b).join(',') === quickSort([]).join(','))
-assert('quick__s 3', [0, 2, 1].sort((a, b) => a - b).join(',') === quickSort([0, 2, 1]).join(','))
-assert('quick__s 4', [3].sort((a, b) => a - b).join(',') === quickSort([3]).join(','))
-assert('quick__s 4', [1000, 2, 100].sort((a, b) => a - b).join(',') === quickSort([1000, 2, 100]).join(','))
+assert('quick__s 1', [...arr3].sort((a, b) => a - b).join(',') === simpleQuickSort([...arr3]).join(','))
+assert('quick__s 2', [].sort((a, b) => a - b).join(',') === simpleQuickSort([]).join(','))
+assert('quick__s 3', [0, 2, 1].sort((a, b) => a - b).join(',') === simpleQuickSort([0, 2, 1]).join(','))
+assert('quick__s 4', [3].sort((a, b) => a - b).join(',') === simpleQuickSort([3]).join(','))
+assert('quick__s 4', [1000, 2, 100].sort((a, b) => a - b).join(',') === simpleQuickSort([1000, 2, 100]).join(','))
 
 const arr4 = arr1
-assert('quickM_s 1', [...arr4].sort((a, b) => a - b).join(',') === memQuickSort([...arr4]).join(','))
-assert('quickM_s 2', [].sort((a, b) => a - b).join(',') === memQuickSort([]).join(','))
-assert('quickM_s 3', [0, 2, 1].sort((a, b) => a - b).join(',') === memQuickSort([0, 2, 1]).join(','))
-assert('quickM_s 4', [3].sort((a, b) => a - b).join(',') === memQuickSort([3]).join(','))
-assert('quickM_s 4', [1000, 2, 100].sort((a, b) => a - b).join(',') === memQuickSort([1000, 2, 100]).join(','))
+assert('quickM_s 1', [...arr4].sort((a, b) => a - b).join(',') === quickSort([...arr4]).join(','))
+assert('quickM_s 2', [].sort((a, b) => a - b).join(',') === quickSort([]).join(','))
+assert('quickM_s 3', [0, 2, 1].sort((a, b) => a - b).join(',') === quickSort([0, 2, 1]).join(','))
+assert('quickM_s 4', [3].sort((a, b) => a - b).join(',') === quickSort([3]).join(','))
+assert('quickM_s 4', [1000, 2, 100].sort((a, b) => a - b).join(',') === quickSort([1000, 2, 100]).join(','))
 
