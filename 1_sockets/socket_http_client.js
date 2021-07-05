@@ -1,27 +1,19 @@
 'use strict'
 
-const net = require('net');
+const net = require('net')
+
 const client = new net.Socket();
 
-const host = 'localhost'
-const port = 8080
-const body = `{"status":true}`
-let message = `POST / HTTP/1.0
-Host: ${host}
-Content-Type: application/json
-Content-Length: ${body.length}
+client.connect(80, 'www.google.com', () => {
+    client.end("GET / HTTP/1.0\n\r"
+        + "Host: www.google.com\n\r"
+        + "\n\r")
+});
 
-${body}`
-
-client.connect(
-    port,
-    host,
-    () => {
-        console.log(`Request:\n${message}`);
-        client.write(message);
-    }
-);
+client.on('error', e => {
+    console.error(e.message);
+})
 
 client.on('data', data => {
-    console.log(`\n\n${data}`);
-});
+    process.stdout.write(data);
+})
